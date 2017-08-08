@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм» [![Build status][travis-image]][travis-url]
 
 * Студент: [Павел Осипов](https://up.htmlacademy.ru/javascript/10/user/217599).
-* Наставник: `Неизвестно`.
+* Наставник: [Федотов Александр](https://htmlacademy.ru/profile/id247015).
 
 ---
 
