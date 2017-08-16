@@ -1,14 +1,7 @@
-'use strict'
+'use strict';
 
 var pictures = [];
-var userComments = [
-  'Всё отлично!', 
-  'В целом всё неплохо. Но не всё.', 
-  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.', 
-  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.', 
-  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.', 
-  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
-];
+var userComments = ['Всё отлично!', 'В целом всё неплохо. Но не всё.', 'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.', 'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.', 'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.', 'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'];
 var picturesContainer = document.querySelector('.pictures');
 var pictureTemplate = document.querySelector('#picture-template').content.querySelector('.picture');
 var fragment = document.createDocumentFragment();
@@ -16,21 +9,18 @@ var galleryOverlay = document.querySelector('.gallery-overlay');
 
 var calculateRandom = function (from, to) {
   var random = Math.floor((Math.random() * (to - from + 1)) + from);
-  
   return random;
 };
 
 var addData = function () {
   var pushPictures = pictures;
-  
-  for(var i = 0; i < 25; i++) {
+  for (var i = 0; i < 25; i++) {
     pushPictures.push({
-      "url": ('photos/' + calculateRandom(1, 25) + '.jpg'),
-      "likes": calculateRandom(15, 200),
-      "comments": userComments[calculateRandom(userComments.length - userComments.length, userComments.length - 1)]
+      'url': ('photos/' + calculateRandom(1, 25) + '.jpg'),
+      'likes': calculateRandom(15, 200),
+      'comments': userComments[calculateRandom(userComments.length - userComments.length, userComments.length - 1)]
     });
-  };
-  
+  }
   return pushPictures;
 };
 
@@ -43,7 +33,6 @@ var createDomElements = function (container) {
 
     fragment.appendChild(createElement);
   }
-  
   return container.appendChild(fragment);
 };
 
