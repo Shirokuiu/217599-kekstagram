@@ -26,7 +26,7 @@ var getPictures = function (setNumber) {
 var createDomElements = function (numberOfElements, container) {
   var elements = getPictures(numberOfElements);
   var elementsLength = elements.length;
-  for ( var i = 0; i < elementsLength; i++) {
+  for (var i = 0; i < elementsLength; i++) {
     var createElement = pictureTemplate.cloneNode(true);
     createElement.querySelector('img').setAttribute('src', elements[i].url);
     createElement.querySelector('.picture-comments').textContent = elements[i].comments;
@@ -36,15 +36,15 @@ var createDomElements = function (numberOfElements, container) {
   container.appendChild(fragment);
 };
 
-//Создал эту пременную для того , чтобы она в себе хранила сгенерированный массив, к которому я смогу обращаться
+//  Создал эту пременную для того , чтобы она в себе хранила сгенерированный массив, к которому я смогу обращаться
 var picturesArray = getPictures(25);
-//Тут переменная содержит число массива 
+//  Тут переменная содержит число массива
 var picturesArrayLength = picturesArray.length;
-//Запуск генерации DOM дерева 
+//  Запуск генерации DOM дерева
 createDomElements(picturesArrayLength, picturesContainer);
 
 galleryOverlay.classList.remove('hidden');
-galleryOverlay.querySelector('.gallery-overlay-image').setAttribute('src', picturesArray[0].url); 
+galleryOverlay.querySelector('.gallery-overlay-image').setAttribute('src', picturesArray[0].url);
 galleryOverlay.querySelector('.likes-count').textContent = picturesArray[0].likes;
 galleryOverlay.querySelector('.comments-count').textContent = picturesArray[0].comments;
 
