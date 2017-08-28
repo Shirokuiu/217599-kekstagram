@@ -35,9 +35,9 @@ var getPictures = function (setNumber) {
   return pictures;
 };
 
-var createDomElements = function (numberOfElements, container) { 
+var createDomElements = function (numberOfElements, container) {
   var elements = getPictures(numberOfElements);
-  var elementsLength = elements.length; 
+  var elementsLength = elements.length;
   for (var i = 0; i < elementsLength; i++) {
     var createElement = pictureTemplate.cloneNode(true);
     createElement.querySelector('img').setAttribute('src', elements[i].url);
@@ -50,41 +50,31 @@ var createDomElements = function (numberOfElements, container) {
 };
 
 createDomElements(25, picturesContainer);
-
-/*У меня так и не получилось добавить картинку , комментарии и лайки в открывшийся попап. Ума не приложу как это сделать. Пробовал и так и этак. Получается фиксированно передать картинку , а как связать их по кликам , хз. Ни на вебинаре про это не было сказано , ни в материалах , которые прилагались. Приложи пожалуйста решение , я его запомню и буду применять. Спасибо*/
-
+/*
+У меня так и не получилось добавить картинку , комментарии и лайки в открывшийся попап. Ума не приложу как это сделать. Пробовал и так и этак. Получается фиксированно передать картинку , а как связать их по кликам , хз. Ни на вебинаре про это не было сказано , ни в материалах , которые прилагались. Приложи пожалуйста решение , я его запомню и буду применять. Спасибо
+*/
 var onPictureClick = function (event) {
-  if (event.target.tagName != 'DIV') {
+  if (event.target.tagName !== 'DIV') {
     event.preventDefault();
     galleryOverlay.classList.remove('hidden');
-    
-    document.addEventListener('keydown', function (event) {
+    document.addEventListener('keydown', function () {
       if (event.keyCode === ENTER_KEYCODE) {
         galleryOverlay.classList.remove('hidden');
       }
     });
   }
-  
   galleryOverlay.querySelector('.gallery-overlay-close').addEventListener('click', function () {
     galleryOverlay.classList.add('hidden');
   });
-  
-  document.addEventListener('keydown', function (event) {
-    if (event.keyCode === ESC_KEYCODE) {
+  document.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === ESC_KEYCODE) {
       galleryOverlay.classList.add('hidden');
-      
     }
   });
-  
-  document.addEventListener('keydown', function (event) {
-    if (event.keyCode === ENTER_KEYCODE) {
+  document.addEventListener('keydown', function (evt) {
+    if (evt.keyCode === ENTER_KEYCODE) {
       galleryOverlay.classList.add('hidden');
     }
   });
 };
-
 picturesContainer.addEventListener('click', onPictureClick);
-
-
-
-
